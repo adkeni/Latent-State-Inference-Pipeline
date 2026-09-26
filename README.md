@@ -4,12 +4,12 @@
 ---
 
 ## Overview
-This repository contains a domain-agnostic data imputation pipeline designed to infer missing qualitative human behavioral data (**Hidden States**) from quantitative macro-environmental data and end-point actions (**Observed States**). 
+This repository contains a reproducible methods framework for imputing missing qualitative behavioral data (**Latent States**) from quantitative macro-environmental data and end-point actions (**Observed States**). 
 
-While initially deployed as a Proof of Concept (PoC) in agricultural economics to infer unrecorded farmer strategies based on public weather and market data, the pipeline is architected to be highly scalable across any data-scarce industry (e.g., finance, healthcare, supply chain logistics).
+As detailed in our accompanying journal submission, this pipeline serves as a synthetic proof-of-concept. It demonstrates how a decoupled architecture can extract external context from public text and propagate it into a probabilistic sequence model, establishing an auditable baseline for data-sparse environments.
 
 ### The Breakthrough: Auto-IO-HMM
-This project introduces the **Autonomous Input-Output Hidden Markov Model (Auto-IO-HMM)**. Unlike standard HMMs which rely on rigid, static transition matrices, this architecture dynamically mutates transition probabilities in real-time. It utilizes exogenous covariates (e.g., sudden market crashes or climate events) extracted via a neuro-symbolic Large Language Model (LLM) bridge to recalculate behavioral probabilities at time $t$.
+Traditional Hidden Markov Models assume temporal stationarity. To relax this restriction, this project introduces a covariate-conditioned Auto-IO-HMM. It utilizes a neuro-symbolic extraction layer (LLM) to convert unstructured text into a contextual covariate vector ($x_t$). This covariate dynamically mutates the HMM's transition probabilities at time $t$ using a multinomial-logit transition function, allowing the model to adapt to exogenous systemic shocks while preserving standard Viterbi decoding.
 
 ---
 
